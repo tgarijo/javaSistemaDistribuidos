@@ -113,17 +113,23 @@ public class RmiWebServer extends java.rmi.server.UnicastRemoteObject implements
 		
 		if(in== null ) throw new RuntimeException();
 		
+		StringBuilder sb = new StringBuilder();
+		
 		try {
-			while ((inputLine = in.readLine()) != null)
-			    escribirFichero(inputLine, "./pattern.txt");
-			in.close();
+			while ((inputLine = in.readLine()) != null) {
+				sb.append(inputLine);
+				sb.append(System.lineSeparator());
+			}
+				
+			escribirFichero(sb.toString(), "./pattern.txt");
+		
 		} catch (IOException e) {			
 			e.printStackTrace();
 			return null;
 		}
-       
-	
-		return null;
+		String patternString = "<a\\s+href\\s*=\\s*(\"[^\"]*\"|[^\\s>]*)\\s*>";
+		
+		return getPattern(patternString);
 	}
 	
 	@Override
@@ -132,7 +138,6 @@ public class RmiWebServer extends java.rmi.server.UnicastRemoteObject implements
 		UnicastRemoteObject.unexportObject(registry, true);
 		System.exit(1);
 	}
-	
 	
 	private List<String>  getPattern(String patternStr) {
  		String filename = "./pattern.txt"; 		
@@ -151,7 +156,9 @@ public class RmiWebServer extends java.rmi.server.UnicastRemoteObject implements
 		    while ((line = rd.readLine()) != null) {
 		      matcher.reset(line);
 		      if (matcher.find()) {
-		    	  setList.add(matcher.toString());		       
+		    	
+		    	  if(matcher.group(1).substring(1,5).equals((String) "http" ))
+		    		  setList.add(matcher.group(1));		       
 		      }
 			}
 		} catch (IOException e) {
