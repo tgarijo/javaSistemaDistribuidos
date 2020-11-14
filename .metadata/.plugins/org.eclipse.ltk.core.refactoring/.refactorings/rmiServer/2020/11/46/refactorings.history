@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;servidor.permisos&apos; to &apos;rmiWebServer/src/rmiWebServer&apos;&#x0A;- Original project: &apos;rmiServer&apos;&#x0A;- Destination element: &apos;rmiWebServer/src/rmiWebServer&apos;&#x0A;- Original element: &apos;servidor.permisos&apos;" description="Copy file" destination="=rmiWebServer/src&lt;rmiWebServer" element1="src/rmiServer/servidor.permisos" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1605355777924" units="0" version="1.0"/>
+</session>

@@ -1,0 +1,46 @@
+package rmiClient;
+
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+
+import rmiServer.CountRMI;
+
+
+
+
+public class Client {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		if(System.getSecurityManager() == null) 
+			System.setSecurityManager(new SecurityManager());
+		
+		try {
+			CountRMI server = (CountRMI) Naming.lookup("//localhost:5060/server");
+			
+			server.sum(0);
+			
+			long diferentTime = 0;
+			
+			for (int x=0;x<1000;x++) {
+				long startTime = System.nanoTime();
+				server.increment();
+				long stopTime = System.nanoTime();
+				diferentTime += (stopTime - startTime);
+			}
+			
+			System.out.println(server.sum());
+			System.out.printf("\nTiempo medio %l",diferentTime/1000);
+			
+			server.closeRegistry();
+			
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

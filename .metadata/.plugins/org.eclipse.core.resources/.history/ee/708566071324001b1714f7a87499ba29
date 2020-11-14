@@ -1,0 +1,16 @@
+package rmiClient;
+
+import java.rmi.Naming;
+
+public class Client {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		if(System.getSecurityManager() == null) 
+			System.setSecurityManager(new SecurityManager());
+		
+		CountRMI server = (CountRMI) Naming.lookup("rmi://localhost:5060")
+	}
+
+}

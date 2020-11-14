@@ -1,0 +1,7 @@
+package rmiWebServer;
+
+public interface webRMI extends java.rmi.Remote {
+
+	boolean consultarWeb(String  url) throws java.rmi.RemoteException;
+	
+}
