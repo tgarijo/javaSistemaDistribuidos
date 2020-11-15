@@ -21,12 +21,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class RmiWebServer extends java.rmi.server.UnicastRemoteObject implements webRMI
-{
+public class RmiWebServer extends java.rmi.server.UnicastRemoteObject implements webRMI{
 
 	private static final long serialVersionUID = 1L;
 	final Registry registry = LocateRegistry.createRegistry(5080);
-	
+
+	protected RmiWebServer() throws RemoteException {
+		super();		
+	}
 
 	public static void main(String[] args) 
 	{
@@ -53,15 +55,9 @@ public class RmiWebServer extends java.rmi.server.UnicastRemoteObject implements
         }		
 
 	}
-	
-	protected RmiWebServer() throws RemoteException 
-	{
-		super();		
-	}
 
 	private  void escribirFichero(String line,  String nombreFichero) throws IOException 
 	{
-		
 	    BufferedWriter writer = new BufferedWriter(new FileWriter(nombreFichero));
 	    writer.write(line);
 	
@@ -72,9 +68,8 @@ public class RmiWebServer extends java.rmi.server.UnicastRemoteObject implements
 	@Override
 	public boolean consultarWeb(String url) throws RemoteException 
 	{
-		final String fichero = "./data.html";
-		String inputLine;
 		
+		String inputLine;
 		
 		BufferedReader in = this.getData(url);
 		
@@ -90,10 +85,9 @@ public class RmiWebServer extends java.rmi.server.UnicastRemoteObject implements
 				sb.append(System.lineSeparator());
 			}
 				
-			escribirFichero(sb.toString(), fichero);
+			escribirFichero(sb.toString(), "./data.html");
 			
 			in.close();
-			System.out.println("Fichero " + fichero + " Generado");
 			
 		} catch (IOException e) {			
 			e.printStackTrace();
@@ -108,13 +102,11 @@ public class RmiWebServer extends java.rmi.server.UnicastRemoteObject implements
 	@Override
 	public boolean borrarDatos() throws RemoteException 
 	{
-		final String fichero = "./data.html";
-		
-		File fd = new File(fichero);
+		File fd = new File("./data.html");
 		
 		if (fd.delete()) 
 		{
-			System.out.println("El fichero " + fichero + " ha sido borrado satisfactoriamente");
+			System.out.println("El fichero ha sido borrado satisfactoriamente");
 			return true;
 		}else 
 		{
@@ -126,7 +118,6 @@ public class RmiWebServer extends java.rmi.server.UnicastRemoteObject implements
 	@Override
 	public List<String> consultarWebLinks(String url) throws RemoteException 
 	{
-		final String fichero = "./pattern.txt";
 		
 		String inputLine;
 		String patternString = "<a\\s+href\\s*=\\s*(\"[^\"]*\"|[^\\s>]*)\\s*>";
@@ -160,8 +151,7 @@ public class RmiWebServer extends java.rmi.server.UnicastRemoteObject implements
 	private List<String>  getPattern(String patternStr) 
 	{
 		
- 		String filename = "./pattern.txt";	
- 		int numPatrones = 0;
+ 		String filename = "./pattern.txt"; 		
  		
 	    BufferedReader rd;
 	    
@@ -183,16 +173,9 @@ public class RmiWebServer extends java.rmi.server.UnicastRemoteObject implements
 		      if (matcher.find()) // Encontramos el patron a buscar
 		      {		    	  		    	
 		    	  if(matcher.group(1).substring(1,5).equals((String) "http" )) // filtramos el patron
-		    	  {
-		    		  setList.add(matcher.group(1));
-		    		  numPatrones++;
-		    	  }		    	  
-		      }		      		      
+		    		  setList.add(matcher.group(1));		       
+		      }
 			}
-		    
-		    if (numPatrones>0)		    	  
-		    	  System.out.println("Patrones extraidos = " + numPatrones);
-		    
 		} catch (IOException e) {
 			
 			e.printStackTrace();			

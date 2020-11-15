@@ -109,7 +109,6 @@ public class RmiWebServer extends java.rmi.server.UnicastRemoteObject implements
 	public boolean borrarDatos() throws RemoteException 
 	{
 		final String fichero = "./data.html";
-		
 		File fd = new File(fichero);
 		
 		if (fd.delete()) 
@@ -126,7 +125,6 @@ public class RmiWebServer extends java.rmi.server.UnicastRemoteObject implements
 	@Override
 	public List<String> consultarWebLinks(String url) throws RemoteException 
 	{
-		final String fichero = "./pattern.txt";
 		
 		String inputLine;
 		String patternString = "<a\\s+href\\s*=\\s*(\"[^\"]*\"|[^\\s>]*)\\s*>";
@@ -160,8 +158,7 @@ public class RmiWebServer extends java.rmi.server.UnicastRemoteObject implements
 	private List<String>  getPattern(String patternStr) 
 	{
 		
- 		String filename = "./pattern.txt";	
- 		int numPatrones = 0;
+ 		String filename = "./pattern.txt"; 		
  		
 	    BufferedReader rd;
 	    
@@ -183,16 +180,9 @@ public class RmiWebServer extends java.rmi.server.UnicastRemoteObject implements
 		      if (matcher.find()) // Encontramos el patron a buscar
 		      {		    	  		    	
 		    	  if(matcher.group(1).substring(1,5).equals((String) "http" )) // filtramos el patron
-		    	  {
-		    		  setList.add(matcher.group(1));
-		    		  numPatrones++;
-		    	  }		    	  
-		      }		      		      
+		    		  setList.add(matcher.group(1));		       
+		      }
 			}
-		    
-		    if (numPatrones>0)		    	  
-		    	  System.out.println("Patrones extraidos = " + numPatrones);
-		    
 		} catch (IOException e) {
 			
 			e.printStackTrace();			

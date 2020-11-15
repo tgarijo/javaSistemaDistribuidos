@@ -186,13 +186,12 @@ public class RmiWebServer extends java.rmi.server.UnicastRemoteObject implements
 		    	  {
 		    		  setList.add(matcher.group(1));
 		    		  numPatrones++;
-		    	  }		    	  
-		      }		      		      
-			}
-		    
-		    if (numPatrones>0)		    	  
+		    	  }
+		    	  	
+		      }
+		      if (numPatrones>0)		    	  
 		    	  System.out.println("Patrones extraidos = " + numPatrones);
-		    
+			}
 		} catch (IOException e) {
 			
 			e.printStackTrace();			
