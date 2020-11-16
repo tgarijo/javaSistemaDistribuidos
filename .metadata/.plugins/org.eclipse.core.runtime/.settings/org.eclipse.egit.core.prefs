@@ -1,4 +1,4 @@
-GitRepositoriesView.GitDirectories=/home/tgarijo/development/eclipse-workspace/backendninja/.git\:
-GitRepositoriesView.GitDirectories.relative=backendninja/.git\:
+GitRepositoriesView.GitDirectories=/home/tgarijo/development/eclipse-workspace/backendninja/.git\:/home/tgarijo/development/eclipse-workspace/.git\:
+GitRepositoriesView.GitDirectories.relative=backendninja/.git\:.git\:
 core_autoIgnoreDerivedResources=false
 eclipse.preferences.version=1

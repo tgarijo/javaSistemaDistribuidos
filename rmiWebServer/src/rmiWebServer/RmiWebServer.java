@@ -84,6 +84,7 @@ public class RmiWebServer extends java.rmi.server.UnicastRemoteObject implements
 		
 		try 
 		{
+			
 			while ((inputLine = in.readLine()) != null) 
 			{
 				sb.append(inputLine);
@@ -93,6 +94,7 @@ public class RmiWebServer extends java.rmi.server.UnicastRemoteObject implements
 			escribirFichero(sb.toString(), fichero);
 			
 			in.close();
+			
 			System.out.println("Fichero " + fichero + " Generado");
 			
 		} catch (IOException e) {			
@@ -169,6 +171,7 @@ public class RmiWebServer extends java.rmi.server.UnicastRemoteObject implements
 	    
 		try 
 		{
+			
 			rd = new BufferedReader(new FileReader(filename));
 			
 			Pattern pattern = Pattern.compile(patternStr);

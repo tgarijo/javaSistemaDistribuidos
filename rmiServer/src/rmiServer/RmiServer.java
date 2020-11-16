@@ -10,6 +10,9 @@ import java.rmi.server.UnicastRemoteObject;
 public class RmiServer extends java.rmi.server.UnicastRemoteObject implements CountRMI{
 
 	private static final long serialVersionUID = 1L;
+	private int sum;
+	
+	final Registry registry = LocateRegistry.createRegistry(5060);
 
 	public static void main(String[] args) throws RemoteException {
 		
@@ -22,6 +25,7 @@ public class RmiServer extends java.rmi.server.UnicastRemoteObject implements Co
 		try {
 			RmiServer server = new RmiServer();
 			Naming.rebind("//localhost:5060/server", server);
+			System.out.println("Iniciando servidor.....");
 		}  catch (RemoteException e) {
             System.err.println("Error de comunicacion: " + e.toString());
             System.exit(1);
@@ -33,9 +37,7 @@ public class RmiServer extends java.rmi.server.UnicastRemoteObject implements Co
         }		
 	}	
 	
-	private int sum;
-	
-	final Registry registry = LocateRegistry.createRegistry(5060);
+
 	
 	private RmiServer() throws RemoteException {
 		super();
