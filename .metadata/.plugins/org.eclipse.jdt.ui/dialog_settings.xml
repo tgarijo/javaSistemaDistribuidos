@@ -2,7 +2,7 @@
 <section name="Workbench">
 	<item key="org.eclipse.jdt.ui.last.external.project" value="/home/tgarijo/development/Java/universidad/Thread/src/Enunciado5"/>
 	<item key="org.eclipse.jdt.ui.last.selected.jre.kind2" value="1"/>
-	<item key="org.eclipse.jdt.ui.lastextjar" value="/home/tgarijo/development/eclipse-workspace/rmiWebClient/src"/>
+	<item key="org.eclipse.jdt.ui.lastextjar" value="/home/tgarijo/development/eclipse-workspace/shopService/lib"/>
 	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
 		<item key="group_libraries" value="true"/>
 		<item key="layout" value="2"/>
@@ -33,7 +33,7 @@
 	</section>
 	<section name="DialogBounds_SuperInterfaceSelectionDialog">
 		<item key="DIALOG_X_ORIGIN" value="114"/>
-		<item key="DIALOG_Y_ORIGIN" value="-85"/>
+		<item key="DIALOG_Y_ORIGIN" value="-40"/>
 		<item key="DIALOG_WIDTH" value="372"/>
 		<item key="DIALOG_HEIGHT" value="553"/>
 		<item key="DIALOG_FONT_NAME" value="1|Ubuntu|10.0|0|GTK|1|"/>
@@ -76,12 +76,38 @@
 		<item key="JarManifestWizardPage.MANIFEST_LOCATION" value=""/>
 		<item key="JarManifestWizardPage.SEAL_JAR" value="false"/>
 		<list key="JarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="rmiPrimoClient/src/rmiPrimoServer.jar"/>
 			<item value="rmiWebClient/src/rmiWebServer.jar"/>
+			<item value="rmiWebServer/src/rmiWebServer.jar"/>
 			<item value="rmiWebClient/src/rmiWebClient/rmiServer.jar"/>
 			<item value="rmiClient/rmiServer.jar"/>
 		</list>
 	</section>
 	<section name="SelfEncapsulateFieldWizard">
 		<item key="GenerateJavadoc" value="false"/>
+	</section>
+	<section name="org.eclipse.ltk.ui.refactoring.settings">
+		<item key="updateSimilarElements" value="false"/>
+		<item key="updateSimilarElementsMatchStrategy" value="1"/>
+		<item key="updateTextualMatches" value="false"/>
+		<item key="updateQualifiedNames" value="false"/>
+		<item key="patterns" value="*"/>
+	</section>
+	<section name="SourceActionDialog.methods">
+		<item key="VisibilityModifier" value="1"/>
+		<item key="FinalModifier" value="false"/>
+		<item key="SynchronizedModifier" value="false"/>
+		<item key="Comments" value="false"/>
+	</section>
+	<section name="AddGetterSetterDialog">
+		<item key="SortOrdering" value="false"/>
+		<item key="RemoveFinal" value="false"/>
+	</section>
+	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
+		<item key="DIALOG_X_ORIGIN" value="193"/>
+		<item key="DIALOG_Y_ORIGIN" value="41"/>
+		<item key="DIALOG_WIDTH" value="581"/>
+		<item key="DIALOG_HEIGHT" value="708"/>
+		<item key="DIALOG_FONT_NAME" value="1|Ubuntu|10.0|0|GTK|1|"/>
 	</section>
 </section>
